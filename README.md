@@ -14,3 +14,46 @@
 
 ## Examples
 
+### Loader
+
+```javascript
+const loader = input => input + input;
+```
+
+### Plugin
+
+```javascript
+module.exports = class DemoPlugin {
+  constructor(options) {
+    this.options = options;
+  }
+  apply(compiler) {
+    console.log(compiler);
+  }
+};
+```
+
+### Resolve
+
+```javascript
+import "foo"; // foo.jsx
+```
+
+```javascript
+const config = {
+  resolve: {
+    alias: {
+      foo: path.join(__dirname, "foo.js")
+    },
+    extensions: [
+      /*...*/
+      ".jsx"
+    ],
+    modules: [
+      /*...*/
+      "my_modules",
+      "node_modules"
+    ],
+  },
+};
+```
