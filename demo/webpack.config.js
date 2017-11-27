@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const merge = require("webpack-merge");
+const webpack = require("webpack");
 
 const parts = require("./webpack.parts");
 
@@ -27,6 +28,8 @@ const commonConfig = merge([
   parts.loadJavaScript({ include: PATHS.app }),
 ]);
 
+const isVendor = ({ resource }) => /node_modules/.test(resource);
+
 const productionConfig = merge([
   parts.extractCSS({
     use: "css-loader",
@@ -37,6 +40,14 @@ const productionConfig = merge([
       name: "[name].[ext]",
     },
   }),
+  {
+    plugins: [
+      new webpack.optimize.CommonsChunkPlugin({
+        name: "vendor",
+        minChunks: isVendor,
+      }),
+    ],
+  },
 ]);
 
 const developmentConfig = merge([
