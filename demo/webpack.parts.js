@@ -1,4 +1,9 @@
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const UglifyWebpackPlugin = require("uglifyjs-webpack-plugin");
+
+exports.minifyJavaScript = () => ({
+  plugins: [new UglifyWebpackPlugin()],
+});
 
 exports.extractCSS = ({ include, exclude, use }) => {
   // Output extracted CSS to a file

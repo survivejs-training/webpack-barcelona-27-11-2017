@@ -51,7 +51,13 @@ const productionConfig = merge([
         name: "manifest",
       }),
     ],
+    performance: {
+      hints: "warning", // "error" or false are valid too
+      maxEntrypointSize: 50000, // in bytes
+      maxAssetSize: 50000, // in bytes
+    },
   },
+  parts.minifyJavaScript(),
 ]);
 
 const developmentConfig = merge([
