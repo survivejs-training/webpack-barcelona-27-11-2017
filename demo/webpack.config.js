@@ -17,12 +17,13 @@ const commonConfig = merge([
     },
     output: {
       path: PATHS.build,
-      filename: "[name].js",
+      filename: "[name].[chunkhash].js",
     },
     plugins: [
       new HtmlWebpackPlugin({
         title: "Webpack demo",
       }),
+      new webpack.NamedModulesPlugin(),
     ],
   },
   parts.loadJavaScript({ include: PATHS.app }),
@@ -45,6 +46,9 @@ const productionConfig = merge([
       new webpack.optimize.CommonsChunkPlugin({
         name: "vendor",
         minChunks: isVendor,
+      }),
+      new webpack.optimize.CommonsChunkPlugin({
+        name: "manifest",
       }),
     ],
   },

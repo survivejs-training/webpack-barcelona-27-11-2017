@@ -6,7 +6,7 @@ exports.extractCSS = ({ include, exclude, use }) => {
     // `allChunks` is needed with CommonsChunkPlugin to extract
     // from extracted chunks as well.
     allChunks: true,
-    filename: "[name].css",
+    filename: "[name].[contenthash].css",
   });
 
   return {
