@@ -7,8 +7,8 @@
 
 * Basics of webpack, complete view on its capabilities
 * How to scale webpack configuration
-* How to make a plugin
-* Issue - why webpack is slow and how to improve performance
+* How to make a plugin - https://survivejs.com/webpack/extending/plugins/ + official docs + study plugins
+* Issue - why webpack is slow and how to improve performance - https://survivejs.com/webpack/optimizing/performance/
 * How to learn to use webpack effectively
 * How webpack works under the hood - https://www.youtube.com/watch?v=CA-upQKYjYc&list=PLRDU4UY3L4pZ_XiQCFTv5Lz1ZDAPPikWl
 
