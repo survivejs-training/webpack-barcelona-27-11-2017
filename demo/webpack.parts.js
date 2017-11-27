@@ -1,5 +1,6 @@
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const UglifyWebpackPlugin = require("uglifyjs-webpack-plugin");
+const webpack = require("webpack");
 
 exports.minifyJavaScript = () => ({
   plugins: [new UglifyWebpackPlugin()],
@@ -87,3 +88,12 @@ exports.loadJavaScript = ({ include, exclude } = {}) => ({
     ],
   },
 });
+
+exports.setFreeVariable = (key, value) => {
+  const env = {};
+  env[key] = JSON.stringify(value);
+
+  return {
+    plugins: [new webpack.DefinePlugin(env)],
+  };
+};
